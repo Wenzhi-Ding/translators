@@ -115,11 +115,11 @@ async function scrape(doc, url = doc.location.href) {
 		item.creators.push(ZU.cleanAuthor(aut, "author"));
 	}
 
-	var tags = doc.querySelectorAll(
-		'main > div > div > div > div > ul > li > a[href^="/regions/"], ' +
-		'main > div > div > div > div > ul > li > a[href^="/topics/"], ' +
-		'main > div > div > div > div > ul > li > a[href^="/tags/"]'
-		);
+	var tags = doc.querySelectorAll(`
+		#content ul > li > a[href^="/regions/"],
+		#content ul > li > a[href^="/topics/"],
+		#content ul > li > a[href^="/tags/"]
+	`);
 	for (let tag of tags) {
 		item.tags.push(tag.textContent);
 	}
